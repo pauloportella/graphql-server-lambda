@@ -11,7 +11,6 @@ const typeDefs = gql`
 
   type Query {
     openingValues: [Stock]
-    hello: String
   }
 `;
 
@@ -23,8 +22,7 @@ const resolvers = {
   Query: {
     openingValues: async _ => {
       return await getData(REST_API);
-    },
-    hello: () => "Hello World"
+    }
   }
 };
 
