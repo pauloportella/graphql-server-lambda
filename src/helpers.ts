@@ -1,6 +1,12 @@
 import { ApolloError } from "apollo-server-lambda";
 import fetch from "node-fetch";
 
+export const parseToFloat = (str: string): number =>
+  parseFloat(str.replace(`,`, `.`));
+
+export const convertDateToISO = (date: string): string =>
+  new Date(date).toISOString();
+
 const isHTTPError = (status: number) => {
   return !(status >= 200 && status < 300);
 };

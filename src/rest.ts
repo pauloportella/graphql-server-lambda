@@ -1,14 +1,10 @@
 // @ts-ignore
 import GoogleSpreadsheet from "google-spreadsheet";
-import { APIGatewayEvent, Context, Handler } from "aws-lambda";
+import { Handler } from "aws-lambda";
+import { convertDateToISO, parseToFloat } from "./helpers";
 
 const key = process.env.GOOGLE_SHEET_KEY;
 const spreadsheet = new GoogleSpreadsheet(key);
-
-const stringToNumber = (str: string): number =>
-  parseFloat(str.replace(`,`, `.`));
-
-const convertDateToISO = (date: string): string => new Date(date).toISOString();
 
 export const opening: Handler<any, any> = (event, context, callback) => {
   // @ts-ignore
@@ -47,7 +43,7 @@ export const opening: Handler<any, any> = (event, context, callback) => {
             }) => ({
               date: convertDateToISO(date),
               stock,
-              price: stringToNumber(price)
+              price: parseToFloat(price)
             })
           )
         )
