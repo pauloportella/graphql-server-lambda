@@ -1,11 +1,11 @@
 import { ApolloError } from "apollo-server-lambda";
 import fetch from "node-fetch";
 
-const isHTTPError = status => {
+const isHTTPError = (status: number) => {
   return !(status >= 200 && status < 300);
 };
 
-export const getData = async url => {
+export const getData = async (url: string) => {
   try {
     const res = await fetch(url);
     const json = await res.json();
@@ -23,7 +23,7 @@ export const getData = async url => {
   }
 };
 
-export const postData = async (url, body) => {
+export const postData = async (url: string, body: any) => {
   try {
     const res = await fetch(url, {
       method: "post",

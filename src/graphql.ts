@@ -20,7 +20,7 @@ const REST_API =
 // Provide resolver functions for your schema fields
 const resolvers = {
   Query: {
-    openingValues: async _ => {
+    openingValues: async () => {
       return await getData(REST_API);
     }
   }

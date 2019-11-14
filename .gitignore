@@ -9,3 +9,7 @@ jspm_packages
 
 # env variables
 .env
+
+
+
+yarn-error.log
